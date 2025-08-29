@@ -7,12 +7,12 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    // Convert cart items to Stripe line items
+    
     const lineItems = body.items.map((item) => ({
       price_data: {
-        currency: "kes", // change if needed
+        currency: "USD", 
         product_data: { name: item.name },
-        unit_amount: item.price * 100, // Stripe uses cents
+        unit_amount: item.price * 100, 
       },
       quantity: item.quantity,
     }));

@@ -18,7 +18,7 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="flex gap-4 text-xs">
           <a
-            href="https://www.facebook.com/kakuma.market/about"
+            href="https://www.facebook.com/kakuma.market/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition-colors"
@@ -31,7 +31,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-colors"
           >
-            <FaInstagram />
+            <FaInstagram  size={25} />
           </a>
           <a
             href="https://twitter.com"
@@ -39,14 +39,14 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-sky-400 transition-colors"
           >
-            <FaTwitter />
+            <FaTwitter size={25} />
           </a>
         </div>
 
         {/* Copyright */}
         <div> 
         <p className="text-xs text-gray-400 md:text-sm">
-          © {new Date().getFullYear()}Kakuma Market. All rights reserved.
+          © {new Date().getFullYear()} Kakuma Market. All rights reserved.
         </p>
         </div>
       </div>
