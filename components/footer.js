@@ -23,10 +23,10 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition-colors"
           >
-            <FaFacebookF />
+            <FaFacebookF size={25} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/scho.les21/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-colors"
