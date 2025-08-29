@@ -8,17 +8,16 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-  <nav className='w-full h-[70px] bg-gradient-to-r from-green-800 via-yellow-600 to-black-800 items-center justify-between px-12 py-2 pt-2 overflow-hidden'>
+  <nav className='w-full h-[70px] bg-gradient-to-r from-green-800 via-yellow-600 to-black-800 items-center justify-between px-12 py-2 pt-2 overflow-hidden fixed z-50'>
        
-        <div className='flex items-center justify-between '>
+        <div className='flex items-center justify-between'>
              <div className='flex items-center  gap-3'>
                  <Image
             src='/logo.jpg'
             width={120}
             height={120}
-            className=''
             />
-        <span className=' uppercase text-sm text-white font-semibold md:text-xl'>Kauma Market</span>
+        <span className=' uppercase text-sm text-white font-semibold md:text-xl'>Kakuma Market</span>
 
 
         </div>

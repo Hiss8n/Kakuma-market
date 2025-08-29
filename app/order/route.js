@@ -6,4 +6,4 @@ const OrderItems = async() => {
   )
 }
 
-export default OrderItems
+export default OrderItems;

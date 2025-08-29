@@ -28,10 +28,11 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "auto" }} className="h-[560px]">
+    <div   style={{ padding: "20px", maxWidth: "600px", margin: "auto" }} className="min-h-screen">
+      <div className="top-60 w-[420px] mt-[60px]"> 
       <div className="h-[60px] bg-gradient-to-b from-blue-700 to-blue-400 flex items-center justify-center text-center uppercase">  <h1 className="text-md text-white">Checkout</h1></div>
     
-      <div className="h-[160px]">
+      <div className="h-[160px] top-60">
         {cartItems.map((item) => (
           <div
             key={item.id}
@@ -67,6 +68,7 @@ export default function CheckoutPage() {
       >
         Pay Amount
       </button>
+    </div>
     </div>
   );
 }

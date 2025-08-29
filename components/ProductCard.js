@@ -61,7 +61,7 @@ export default function ProductPage() {
 
   return (
     <div  className="p-2 overflow-hidden">
-      <h2 className="text-md md:text-xl font-bold text-teal-950 pl-4  "> Fashion</h2>
+      <h2 className="text-md md:text-xl font-bold text-teal-950 pl-4 py-4 bg-slate-50 "> Fashion</h2>
       
     <div className="grid grid-cols-1 items-center md:grid-cols-3 gap-4 px-6 p-6 hover:transition-opacity-100 cursor bg-slate-100">
       {items.map((item) => (
