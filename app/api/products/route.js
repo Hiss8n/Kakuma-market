@@ -1,4 +1,4 @@
-import cloudinary from "@/app/cloudinary/route";
+import cloudinary from "@/lib/cloudinary/route";
 import connectDb from "@/lib/db";
 
 import Product from "@/model/Product";
