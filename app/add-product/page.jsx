@@ -2,12 +2,8 @@
 import AddForm from '@/components/AddForm'
 import React from 'react'
 
-const page = () => {
+const addProductPage = () => {
 
-  const handleAddAction =(formData)=>{
-
-
-  }
   return (
     
     
@@ -26,4 +22,4 @@ const page = () => {
   )
 }
 
-export default page
+export default addProductPage

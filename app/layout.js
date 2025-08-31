@@ -27,7 +27,11 @@ export default function RootLayout({ children }) {
       >
         <ToastProvider/>
         <Navbar/>
+        <main className="w-full px-4 max-w-7xl">
+
+       
         {children}
+         </main>
         <Footer/>
       </body>
     </html>
