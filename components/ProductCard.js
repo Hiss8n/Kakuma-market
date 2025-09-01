@@ -86,7 +86,7 @@ export default function ProductPage() {
       
     <div className="grid grid-cols-1 items-center md:grid-cols-3 gap-4 px-6 p-6 hover:transition-opacity-100 cursor bg-slate-100">
       {products.map((product) => (
-        <div key={product.id} className="bg-white rounded-xl opacity:100 shadow-lg overflow-hidden 
+        <div key={product._id} className="bg-white rounded-xl opacity:100 shadow-lg overflow-hidden 
         group hover:opacity-200  transform transition-transform duration-300 hover:scale-95 hover:bg-slate-650 hover:duration-200">
           <Image
             src={product.image}

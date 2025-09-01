@@ -2,12 +2,14 @@ import mongoose from "mongoose";
 
 
 const UserSchema = new mongoose.Schema({
-name: String,
-email: { type: String, unique: true },
-password: String,
-cartItems: [
+name:String ,
+email: String,
+password: String ,
+role:{type:String,enum:["admin","user"] ,default:'user'},
+cart: [
 {
 productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+
 quantity: { type: Number, default: 1 },
 },
 ],

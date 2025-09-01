@@ -1,6 +1,7 @@
-import Product from "@/model/Product";
+
 import { NextResponse } from "next/server";
 import connectDb from "@/lib/db";
+import User from "@/model/User";
 
 
 export async function GET() {
@@ -8,12 +9,12 @@ export async function GET() {
    
     await connectDb();
 
-    // Fetch all users
-    const products = await Product.find({})
-   
+    // Fetch all products
+    const user = await User.find({})
+    
 
     
-    return NextResponse.json(products, { status: 200 });
+    return NextResponse.json(user, { status: 200 });
   } catch (error) {
     console.error("Error fetching products:", error);
     return NextResponse.json(
