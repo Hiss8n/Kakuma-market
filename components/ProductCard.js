@@ -1,28 +1,33 @@
 'use client'
 
-import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useProductStore } from "@/store/productStore";
 
 export default function ProductPage() {
 
-
-  const [products,setProducts]=useState([]);
-
+   const {products,getProducts}= useProductStore()
 
 
+
+  
 
   useEffect(()=>{
-     axios.get('/api/fetch-products')
-     .then((res)=>{
-      console.log(res.data);
-      setProducts(res.data)
-     })
-     .catch((e)=>{console.log(e)})
+   
+     getProducts()
     
-  },[]);
+  
+  },[getProducts])
+/*   console.log('This are the producst',products[0]); */
 
-  console.log(products);
+
+  
+
+
+
+ 
+
+
 
   /* const items = [
     {
@@ -90,9 +95,11 @@ export default function ProductPage() {
         group hover:opacity-200  transform transition-transform duration-300 hover:scale-95 hover:bg-slate-650 hover:duration-200">
           <Image
             src={product.image}
-            alt={product.alt}
+            alt={product._id}
             width={400}
             height={670}
+            priority
+          
             className="w-full  object-coverw-full h-64 object-cover group-hover:opacity-80 transition "
           />
           <div className="p-4 py-6">

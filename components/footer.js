@@ -8,7 +8,7 @@ export default function Footer() {
         {/* Hotel Name */}
         <div className='h-10 rounded-full flex justify-center items-center'>
         
-        <img src='/logo.jpg'  alt='logo' width={44} height={44} /> 
+        <img src='/logo.jpg'  alt='logo' width={44} height={44}  /> 
          <p className="text-xs font-semibold ml-3 md:text-sm">Kakuma Market</p>
           
 

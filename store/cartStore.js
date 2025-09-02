@@ -1,4 +1,5 @@
 import Product from '@/model/Product'
+import axios from 'axios'
 import {create} from 'zustand'
 
 
@@ -6,6 +7,7 @@ import {create} from 'zustand'
 
 export const useCartStore=create((set)=>({
     cart:[],
+    
     addToCart:async(product)=>{
         set((state)=>{
             const existing= state.cart.find(item=>item.id===product.id)
@@ -17,6 +19,8 @@ export const useCartStore=create((set)=>({
             return { cart:[...state.cart,{...product, quantity:1}]}
         })
     },
+
+
 
     removeItemFromCart:async(id)=>{
            set((state) => ({
@@ -39,7 +43,7 @@ export const useCartStore=create((set)=>({
     updateItemFromCart:async(productId)=>{},
     updateQuantity:async(productId, amount)=>{},
     clearCart:async()=>{
-        set()={cart:[]}
+        set({cart:[]})
         
     }
 

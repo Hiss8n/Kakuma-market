@@ -10,7 +10,7 @@ export async function GET() {
     await connectDb();
 
     // Fetch all products
-    const user = await User.find({})
+    const user = await User.find({}).lean();
     
 
     

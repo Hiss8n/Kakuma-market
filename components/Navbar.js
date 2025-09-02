@@ -1,25 +1,46 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { MenuIcon, ShoppingCart } from 'lucide-react'
 import Image from 'next/image';
-import axios from 'axios';
+import { useAuthStore } from '@/store/AuthStore'
+
 
 
 
 const Navbar = () => {
+  const [isAdmin,setIsAdmin]=useState(false)
 
+  const {users,checkAuth,checkRole}=useAuthStore();
+
+    
 
   useEffect(()=>{
-     axios.get('api/fetch-users')
-     .then((res)=>{console.log(res)})
-     .catch((e)=>console.log(e))
+    checkAuth()
+    
+  const userRole=users.find(user=>user.role==='admin')
+  if(userRole){
+    setIsAdmin(()=>true)
+  }
+    
+  },[checkAuth,users]);
+  console.log(isAdmin)
+ 
+ 
+/*   const user=users.map((item)=>item._id)
+  console.log(user)
+  
+ */    
 
-     
-  },[])
-  return (
-  <nav className='w-full h-[70px] bg-gradient-to-r from-green-800 via-yellow-600 to-black-800 items-center justify-between px-12 py-2 pt-2 overflow-hidden fixed z-50 pb-12'>
+
+    
+
+
+
+
+
+  return (<nav className='w-full h-[70px] bg-gradient-to-r from-green-800 via-yellow-600 to-black-800 items-center justify-between px-12 py-2 pt-2 overflow-hidden fixed z-50 pb-12'>
        
         <div className='flex items-center justify-between'>
           <Link href={'/'}>
@@ -30,20 +51,24 @@ const Navbar = () => {
             width={120}
             height={120}
             alt='logo'
+            className='w-auto object-cover h-auto'
             />
-        <span className=' uppercase text-sm text-white font-semibold md:text-xl'>Kakuma Market</span>
+           <span className=' uppercase text-sm text-white font-semibold md:text-xl'>Kakuma Market</span>
 
 
-        </div>
-         </Link>
+           </div>
+            </Link>
 
             <div className='hidden  md:flex items-center justify-end gap-3 text-xl text-yellow-300 '>
 
             <Link href={'/'}>Home</Link>
-            
-            <Link href={'/add-product'}>
-            <Button className='px-4 py-2 rounded-lg bg-gradient-to-r ml-3 from-green-600 to-green-400 text-lg text-white' >Add products</Button>
+           
+             <Link href={'/add-product'}>
+              <Button className='px-4 py-2 rounded-lg
+             bg-gradient-to-r ml-3 from-green-600 to-green-400 text-lg text-white' >Add products</Button>
             </Link>
+            
+            
             </div>
             <div className=' hidden md:flex justify-between'>
                 
