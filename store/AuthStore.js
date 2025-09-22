@@ -26,7 +26,7 @@ export const useAuthStore=create((set)=>({
             const res= await axios.get('api/fetch-users')
 
             const user=res.data.find(user=>user.role==="user");
-            console.log(user);
+          
            if(!user){
             return
 

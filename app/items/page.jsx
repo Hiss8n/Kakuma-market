@@ -1,56 +1,48 @@
-"use client";
+'use client'
 
-import Image from "next/image";
 import { useEffect } from "react";
-
-import {useDispatch, useSelector} from "react-redux"
-import { addTocart } from "@/store/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "@/store/productsSlice";
 
+import Image from "next/image";
+import { addTocart } from "@/store/cartSlice";
 
 
-export default function ProductPage() {
-  const dispatch=useDispatch();
- const products=useSelector((item)=>item.products.products);
- const status=useSelector((item)=>item.products.status);
- const error=useSelector((item)=>item.products.error);
+const ProductListPage = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const status = useSelector((state) => state.products.status);
+  const error = useSelector((state) => state.products.error);
+
+  const cartItem = useSelector((state) => state.products.products);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch, cartItem]);
  
-  const cartItems=useSelector((item)=>item.cart.cart) ;
 
 
-    useEffect(() => {
-      if (status === 'idle') {
-        dispatch(fetchProducts());
-        
-      }
-    }, [error,dispatch,status]);
-  
-   
-  
-
- 
- 
-  
-
- 
- 
   const handleAddToCart = (product) => {
-    dispatch(addTocart({product})); 
-  };
+
+    dispatch(addTocart({product}));
+
+  }
 
   return (
-    <div className="p-2 overflow-hidden">
+    <div className='p-2 overflow-hidden top-60 w-full h-full pt-30'>
       <h2 className="text-md md:text-xl font-bold text-teal-950 pl-4 py-4 bg-slate-50 ">
         {" "}
-        Fashion
+        Prodcust List Page
       </h2>
-
       <div className="grid grid-cols-1 items-center md:grid-cols-3 gap-4 px-6 p-6 hover:transition-opacity-100 cursor bg-slate-100">
-        {products.map((product) => (
+
+        {products.length === 0 ? (<p>No products found</p>) : (products.map((product) => (
           <div
             key={product._id}
             className="bg-white rounded-xl opacity:100 shadow-lg overflow-hidden 
-        group hover:opacity-200  transform transition-transform duration-300 hover:scale-95 hover:bg-slate-650 hover:duration-200"
+                group hover:opacity-200  transform transition-transform duration-300 hover:scale-95 hover:bg-slate-650 hover:duration-200"
           >
             <Image
               src={product.image}
@@ -76,8 +68,12 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
-        ))}
+        )))}
       </div>
+
+
     </div>
-  );
+  )
 }
+
+export default ProductListPage

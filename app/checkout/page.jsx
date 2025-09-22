@@ -1,18 +1,24 @@
 "use client";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function CheckoutPage() {
+
+  const cartItems=useSelector((state)=>state.cart.cart)
  
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "ankara green", price: 2500, quantity: 1 },
-    { id: 2, name: "Afro women dress", price: 4000, quantity: 2 },
-  ]);
+ console.log(cartItems);
 
  
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + item?.product.price * item?.quantity,
     0
   );
+
+  const price =cartItems.map(item=>{
+    return Number(item?.product.price);
+  })
 
   const handleCheckout = async () => {
     const res = await fetch("/api/checkout", {
@@ -28,31 +34,51 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div   style={{ padding: "20px", maxWidth: "600px", margin: "auto" }} className="min-h-screen">
-      <div className="top-60 w-[420px] mt-[60px]"> 
-      <div className="h-[60px] bg-gradient-to-b from-blue-700 to-blue-400 flex items-center justify-center text-center uppercase">  <h1 className="text-md text-white">Checkout</h1></div>
+    <div  className="min-h-screen w-full mx-auto flex-col pt-20 items-center">
+      <div className="p-4 w-full justify-center"> 
+      <div className="h-[60px] bg-gradient-to-b from-blue-700 to-blue-400 flex items-center justify-center text-center uppercase">  <h1 className="text-md text-white">CART ITEMS</h1></div>
+      <div className="w-full overflow-hidden flex items-center justify-between bg-amber-50 h-[30px] px-4">
+        <h3 className="text-shadow-black w-[240px]">ITEM</h3>
+        <h3 className="text-shadow-black">PRICE</h3>
+        <h3 className="text-shadow-black">QUANTITY</h3>
+        <h3 className="text-shadow-black">TOTAL</h3>
+
+      </div>
     
       <div className="h-[160px] top-60">
         {cartItems.map((item) => (
           <div
-            key={item.id}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              margin: "10px 0",
-              padding: "10px",
-              borderBottom: "1px solid #ccc",
-            }}
+            key={item?.id}
+            className="w-full overflow-hidden flex items-center justify-between"
           >
-            <span>
-              {item.name} x {item.quantity}
-            </span>
-            <span>USD {item.price * item.quantity}</span>
+           <div className="flex w-[200px] items-center ">
+          <Image
+            src={item?.product.image}
+            width={380}
+            height={200}
+            alt={item?.product.name}
+            className="cover overflow-hidden mr-3"
+            />
+            <div className="mb-2 flex-col">
+              <span className="font-bold text-md mb-8">{item?.product.name}</span>
+              
+              <button className=' text-gray-500 text-md mt-5'>Remove</button>
+            </div>
+            
+
+           </div>
+           <div>
+            <span> $ {price}</span>
+           </div>
+           <div>{item?.quantity}</div>
+            <div>{parseInt(Math.ceil(item?.product.price*item.quantity).toFixed(2))}</div>
           </div>
         ))}
       </div>
 
-      <h2>Subtotal: USD {subtotal}</h2>
+      
+    </div>
+    <h2>Subtotal: USD {subtotal}</h2>
       <h2>Total: USD {subtotal}</h2>
 
       <button
@@ -68,7 +94,6 @@ export default function CheckoutPage() {
       >
         Pay Amount
       </button>
-    </div>
     </div>
   );
 }

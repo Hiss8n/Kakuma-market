@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer";
 import ToastProvider from "@/components/ToastProvider";
+import StoreProvider from "@/components/StoreProvider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +27,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToastProvider/>
-        <Navbar/>
-        <main className="w-full px-4 max-w-7xl">
+        <ToastProvider />
 
-       
-        {children}
-         </main>
-        <Footer/>
+        <StoreProvider>
+          <Navbar />
+          <main className="w-full px-4 max-w-7xl">{children}</main>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );
