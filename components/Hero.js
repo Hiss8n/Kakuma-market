@@ -40,11 +40,10 @@ export default function Hero() {
          {/* Left Section - Text */}
         <div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-            Empowering Women Through Fashion ✨
+            Empowering  Youths ✨
           </h1>
           <p className="mt-6 text-lg text-gray-600">
-            Discover elegant, handmade dresses crafted by talented women in 
-            Kakuma. Each dress blends culture, resilience, and modern style.  
+            Discover elegant, handmade dresses crafted by talented individuals. Each dress blends culture, resilience, and modern style.  
           </p>
           <div className="flex items-between w-full h-20 items-between"> 
             <Link href={'/items'}>  
