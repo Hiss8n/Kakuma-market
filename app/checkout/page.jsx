@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { removeCartItem } from "@/store/cartSlice";
 
 export default function CheckoutPage() {
 
-  const cartItems=useSelector((state)=>state.cart.cart)
+  const cartItems=useSelector((state)=>state.cart.cart);
+  
  
- console.log(cartItems);
+ const dispatch=useDispatch();
 
  
   const subtotal = cartItems.reduce(
@@ -48,7 +50,7 @@ export default function CheckoutPage() {
       <div className="h-[160px] top-60">
         {cartItems.map((item) => (
           <div
-            key={item?.id}
+            key={item?.product._id}
             className="w-full overflow-hidden flex items-center justify-between"
           >
            <div className="flex w-[200px] items-center ">
@@ -62,7 +64,9 @@ export default function CheckoutPage() {
             <div className="mb-2 flex-col">
               <span className="font-bold text-md mb-8">{item?.product.name}</span>
               
-              <button className=' text-gray-500 text-md mt-5'>Remove</button>
+              <button className=' text-gray-500 text-md mt-5'
+              onClick={()=>{dispatch(removeCartItem({item:item?.product._id}))}}
+              >Remove</button>
             </div>
             
 

@@ -3,6 +3,7 @@ import {motion} from 'framer-motion';
 import gsap from 'gsap';
 
 import { useGSAP } from '@gsap/react';
+import Link from 'next/link';
 
 
 
@@ -46,9 +47,11 @@ export default function Hero() {
             Kakuma. Each dress blends culture, resilience, and modern style.  
           </p>
           <div className="flex items-between w-full h-20 items-between"> 
-          <button className="mt-6 mr-12 bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition">
+            <Link href={'/items'}>  
+          <button className="mt-6 mr-10 bg-blue-600 text-white px-8 py-1 rounded-xl shadow hover:bg-blue-700 transition text-sm font-bold">
             Shop Now
           </button>
+          </Link>
               <div className="flex justify-center mt-8">
       <motion.div
         className="relative w-80 h-10 cursor-pointer xl:w-50"

@@ -5,9 +5,13 @@ import { Button } from "./ui/button";
 import { MenuIcon, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useAuthStore } from "@/store/AuthStore";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const cartItems= useSelector((state)=>state.cart.cart)
+  const itemsQuantity=useSelector((state)=>state.cart.cartQuantity);
+
 
   const { users, checkAuth, checkRole } = useAuthStore();
 
@@ -20,10 +24,7 @@ const Navbar = () => {
     }
   }, [checkAuth, users]);
 
-  /*   const user=users.map((item)=>item._id)
-  console.log(user)
-  
- */
+ 
 
   return (
     <nav className="w-full h-[70px] bg-gradient-to-r from-green-800 via-yellow-600 to-black-800 items-center justify-between px-12 py-2 pt-2 overflow-hidden fixed z-50 pb-12">
@@ -59,7 +60,7 @@ const Navbar = () => {
           <Link href="checkout">
             <Button className="px-16 py-2 bg-black rounded-b-sm p-4 text-slate-700">
               <span className="text-shadow-white font-extrabold text-md text-white">
-                2
+                {Number(itemsQuantity)}
               </span>
 
               <ShoppingCart size={44} color="#fff" />

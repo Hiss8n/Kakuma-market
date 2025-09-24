@@ -1,45 +1,34 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import ProductListPage from "@/app/items/page";
+/* import { useEffect } from "react";
 
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { addTocart } from "@/store/cartSlice";
-import { fetchProducts } from "@/store/productsSlice";
-
-
+import { fetchProducts } from "@/store/productsSlice"; */
 
 export default function ProductPage() {
-  const dispatch=useDispatch();
- const products=useSelector((item)=>item.products.products);
- const status=useSelector((item)=>item.products.status);
- const error=useSelector((item)=>item.products.error);
- 
-  const cartItems=useSelector((item)=>item.cart.cart) ;
+/*   const dispatch = useDispatch();
+  const products = useSelector((item) => item.products.products);
+  const status = useSelector((item) => item.products.status);
+  const error = useSelector((item) => item.products.error);
 
+  const cartItems = useSelector((item) => item.cart.cart);
 
-    useEffect(() => {
-      if (status === 'idle') {
-        dispatch(fetchProducts());
-        
-      }
-    }, [error,dispatch,status]);
-  
-   
-  
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]);
 
- 
- 
-  
-
- 
- 
   const handleAddToCart = (product) => {
-    dispatch(addTocart({product})); 
-  };
+    dispatch(addTocart({ product }));
+  }; */
 
   return (
-    <div className="p-2 overflow-hidden">
+    <ProductListPage/>
+   /*  <div className="p-2 overflow-hidden">
       <h2 className="text-md md:text-xl font-bold text-teal-950 pl-4 py-4 bg-slate-50 ">
         {" "}
         Fashion
@@ -78,6 +67,6 @@ export default function ProductPage() {
           </div>
         ))}
       </div>
-    </div>
+    </div> */
   );
 }

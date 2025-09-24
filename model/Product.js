@@ -7,6 +7,7 @@ image: String,
 name: String,
 price: Number,
 description: String,
+quantity:Number,
 
 });
 

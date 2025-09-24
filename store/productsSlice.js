@@ -8,7 +8,7 @@ export const fetchProducts = createAsyncThunk("api/fetch-poducts", async () => {
 
 const initialState = {
   products: [],
-  status: "idle", // 'loading' | 'succeeded' | 'failed'
+  status:'idle'  , /* |'loading' | 'succeeded' | 'failed', */
   error: null,
 };
 
@@ -18,21 +18,25 @@ export const productsSlice = createSlice({
   reducers: {
     
     },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProducts.pending, (state) => {
-        state.status = "loading";
+    extraReducers:(builder)=>{
+      builder
+      .addCase(fetchProducts.pending,(state)=>{
+        state.status='Pending'
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.products = action.payload;
+      .addCase(fetchProducts.fulfilled,(state,action)=>{
+        state.status='succeeded'
+        state.products=action.payload
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
-  },
+      .addCase(fetchProducts.rejected,(state,action)=>{
+        state.status='failed'
+        state.error=action.error.message
+      })
+
+    }
+ 
+
 });
+
 
 export const { addToCart, removeCartItem } = productsSlice.actions;
 export default productsSlice.reducer;
